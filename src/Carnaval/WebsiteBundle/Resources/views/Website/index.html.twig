@@ -1,0 +1,24 @@
+{# src/Carnaval/WebsiteBundle/Resources/views/Website/index.html.twig #}
+ 
+{% extends "::layout.html.twig" %}
+ 
+{% block title %}
+  Accueil - {{ parent() }}
+{% endblock %}
+ 
+{% block carnaval_contenu %}
+    <br />
+    <IMG src="{{ asset('img/logo_main.png') }}" style="border:1px solid white;" alt="Logo Carnaval Artifices Evénementiels" >
+    <br />
+	<P style="text-align:center;">
+		<STRONG>CARNAVAL ARTIFICES EVENEMENTIELS</STRONG>, le spécialiste Normands du spectacle pyrotechnique.
+	</P>
+	<TABLE cellpadding="0" cellspacing="0" border="0" width="100%">
+		<TR>
+			<TD align="center" valign="bottom"><IMG src="{{ asset('img/logo_lacroix_ruggieri.png') }}" width="250px" style="border:1px solid white;" alt="Logo Lacrois-Ruggieri" ></TD>
+		</TR>
+		<TR>
+			<TD align="center"><br><A HREF="http://www.facebook.com/Carnaval.Artifices.Evenementiels"><IMG src="{{ asset('img/facebook.jpg') }}" width="100px" style="border:1px solid white;" alt="Logo Facebook"></A></TD>
+		</TR>
+	</TABLE>
+{% endblock %}

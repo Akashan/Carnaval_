@@ -1,0 +1,2 @@
+[05-Mar-2014 14:32:27 Europe/Berlin] PHP Fatal error:  Class 'Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle' not found in /home/douchetp/public_html/carnaval/app/AppKernel.php on line 19
+[06-Mar-2014 10:50:10 Europe/Paris] PHP Fatal error:  Allowed memory size of 33554432 bytes exhausted (tried to allocate 32 bytes) in /home/douchetp/public_html/carnaval/vendor/twig/twig/lib/Twig/Node/Expression/GetAttr.php on line 16

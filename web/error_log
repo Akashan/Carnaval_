@@ -1,0 +1,1 @@
+[05-Mar-2014 16:49:23 Europe/Berlin] PHP Fatal error:  Call to a member function getEventDate() on a non-object in /home/douchetp/public_html/carnaval/src/Carnaval/WebsiteBundle/Controller/WebsiteController.php on line 67

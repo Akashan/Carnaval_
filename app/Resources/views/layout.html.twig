@@ -1,0 +1,150 @@
+{# app/Resources/views/layout.html.twig #} 
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<META NAME="Author" LANG="fr" CONTENT="Pierre-Antoine DOUCHET">
+    <META NAME="Publisher" CONTENT="Pierre-Antoine DOUCHET">
+    <META NAME="Reply-to" CONTENT="douchet.pantoine@gmail.com (Pierre-Antoine DOUCHET)">
+    <META NAME="Description" CONTENT="Site de la société CARNAVAL ARTIFICES EVENEMENTIELS">
+    <META NAME="Keywords" CONTENT="carnaval, artifices, evenementiels, artifice, evenementiel, feu d'artifice, feux d'artifices, rouen, normandie">
+    <META NAME="Indentifier-URL" CONTENT="http://www.carnaval-artifices-evenementiel.com/">
+    <META NAME="Copyright" CONTENT="© 2013 Northman Software">
+    <META NAME="Generator" CONTENT="PhpStorm">
+    <META NAME="Date" CONTENT="30/11/2011">
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+    <META NAME="Robots" CONTENT="All">
+    <META NAME="Revisit-after" CONTENT="15">
+ 
+    <title>{% block title %}CARNAVAL Artifices Evénementiels{% endblock %}</title>
+ 
+    {% block stylesheets %}
+      <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" type="text/css" />
+      <link rel="stylesheet" href="{{ asset('css/carnaval.css') }}" type="text/css" />
+      <link rel="stylesheet" href="{{ asset('css/datepicker.css') }}" type="text/css" />
+    {% endblock %}
+
+    {% block javascripts %}
+      {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+      <script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
+      <script type="text/javascript" src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
+      {{ tinymce_init() }}
+    {% endblock %}
+
+      <style>
+        html, body {
+            height: 100%;
+        }
+        footer {
+            color: #666;
+            background: #222;
+            padding: 17px 0 18px 0;
+            border-top: 1px solid #000;
+        }
+        footer a {
+            color: #999;
+        }
+        footer a:hover {
+            color: #efefef;
+        }
+        .wrapper {
+            min-height: 100%;
+            height: auto !important;
+            height: 100%;
+            margin-bottom: -63px;
+        }
+
+        .push {
+            height: 63px;
+        }
+        /* not required for sticky footer; just pushes hero down a bit */
+        .wrapper > .container {
+            padding-top: 0px;
+        }
+    </style>
+
+  </head> 
+  <body>
+    <div class="wrapper">
+		<nav class="navbar navbar-inverse navbar-static-top">
+			<div class="navbar-inner">
+				<div class="container">
+                    <div class="nav-collapse">
+                        <ul class="nav">
+                            <li> <a href="#"></a> </li>
+                            <li> <a href="#"></a> </li>
+                            <li> <a href="{{ path('carnaval_website_accueil') }}">Accueil</a> </li>
+                            <li> <a href="{{ path('carnaval_website_presentation') }}">Présentation</a> </li>
+                            <li> <a href="{{ path('carnaval_website_references') }}">Références</a> </li>
+                            <li> <a href="{{ path('carnaval_website_catalogue') }}">Prêt à Tirer&reg;</a> </li>
+                            <li> <a href="{{ path('carnaval_website_calendrier') }}">Calendrier</a> </li>
+                            <!--li> <a href="{{ path('carnaval_website_galeries') }}">Galeries Photos</a> </li>
+                            <li> <a href="{{ path('carnaval_website_videos') }}">Vidéos</a> </li-->
+                            <li> <a href="{{ path('carnaval_website_contacts') }}">Contacts</a> </li>
+                            <li> <a href="{{ path('carnaval_website_liens') }}">Liens</a> </li>
+                        </ul>
+                        <form class="pull-right" action="">
+                            <ul class="nav">
+                                {% if is_granted('ROLE_ADMIN') %}
+                                    <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="#">Admin<b class="caret"></b> </a>
+                                        <ul class="dropdown-menu">
+                                            <li class="dropdown-submenu"> <a class="dropdown-toggle" data-toggle="dropdown" href="#">Messages<b class="caret"></b> </a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="{{ path('carnaval_website_adm_messages') }}">Boite de Reception</a></li>
+                                                    <li><a href="{{ path('carnaval_website_adm_messages_archived') }}">Messages Archivés</a></li>
+                                                    <li><a href="{{ path('carnaval_website_adm_messages_garbage') }}">Corbeille</a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="dropdown-submenu"> <a class="dropdown-toggle" data-toggle="dropdown" href="#">Liens<b class="caret"></b> </a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="{{ path('carnaval_website_adm_categories') }}">Liste des catégories</a></li>
+                                                    <li><a href="{{ path('carnaval_website_adm_liens') }}">Liste des liens</a></li>
+                                                    <li><a href="{{ path('carnaval_website_adm_categorie_ajout') }}">Ajouter une catégorie</a></li>
+                                                    <li><a href="{{ path('carnaval_website_adm_lien_ajout') }}">Ajouter un lien</a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="dropdown-submenu"> <a class="dropdown-toggle" data-toggle="dropdown" href="#">Evenements<b class="caret"></b> </a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="{{ path('carnaval_website_adm_events') }}">Liste des événements</a></li>
+                                                    <li><a href="{{ path('carnaval_website_adm_evenement_ajout') }}">Ajouter un événement</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="{{ path('carnaval_website_adm_images') }}">Images</a></li>
+                                            <li><a href="{{ path('carnaval_website_adm_videos') }}">Vidéos</a></li>
+                                        </ul>
+                                    </li>
+                                {% endif %}
+                                <li>{% if is_granted('ROLE_ADMIN') %}<a href="{{ path('logout') }}">Logout</a> {% else %} <a href="{{ path('login') }}">Login</a> {% endif %} </li>
+                            </ul>
+                        </form>
+                    </div>
+				</div>
+			</div>
+		</nav>
+		<div class="container">
+			<div class="row-fluid">
+				<div class="span10 offset1">
+                    {% for key, flashMessages in app.session.flashbag.all() %}
+                        {% for message in flashMessages %}
+                            <div class="alert alert-{{ key }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+					{% block carnaval_contenu %}
+					  
+					{% endblock %}
+				</div>     
+			</div>
+      <div class="push"><!--//--></div>
+		</div>
+    </div>
+    <footer>
+      <div class="container">
+        <p class="muted credit" style="text-align: center; font-size: 10px;">Tous droit réservés - Carnaval Artifices Evénementiel SARL au capital de 7 500&#8364; | SIRET 53309793700015 | R.C.S ROUEN 533 097 937</p>
+      </div>
+    </footer>
+
+  </body>
+</html>

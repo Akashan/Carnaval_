@@ -1,0 +1,33 @@
+{# src/Carnaval/WebsiteBundle/Resources/views/Website/index.html.twig #}
+ 
+{% extends "::layout.html.twig" %}
+
+{% block title %}
+  Admin - Ajout Evénement - {{ parent() }}
+{% endblock %}
+
+{% block carnaval_contenu %}
+    <form class="form-horizontal well" id="formulaire" method="post" name={{ formName }} {{ form_enctype(form) }}>
+        <fieldset>
+            <legend style="color:#fff;">Ajouter un Evénement</legend>
+            {{ form_widget(form) }}
+            <script type="text/javascript">
+
+                var nowTemp = new Date();
+                var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+
+                var checkin = $('.datepicker').datepicker({
+                    format: 'dd/mm/yyyy',
+                    onRender: function(date) {
+                        return date.valueOf() < now.valueOf() ? 'disabled' : '';
+                    }
+                }).data('datepicker');
+
+            </script>
+            <br />
+            <input type="submit" class="btn btn-primary" />
+            <input name="cancel" class="btn" type="submit" value="Cancel" formnovalidate/>
+        </fieldset>
+    </form>
+
+{% endblock %}
