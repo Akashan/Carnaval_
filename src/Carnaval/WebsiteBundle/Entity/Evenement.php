@@ -167,7 +167,7 @@ class Evenement
      */
     public function setIsDeleted($isDeleted)
     {
-        $this->isDeleted = $isDeleted;
+        $this->isDeleted = !$isDeleted;
     
         return $this;
     }
@@ -179,6 +179,6 @@ class Evenement
      */
     public function getIsDeleted()
     {
-        return $this->isDeleted;
+        return !$this->isDeleted;
     }
 }

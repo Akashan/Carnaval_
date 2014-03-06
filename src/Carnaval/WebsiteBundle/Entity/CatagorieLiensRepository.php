@@ -12,4 +12,19 @@ use Doctrine\ORM\EntityRepository;
  */
 class CatagorieLiensRepository extends EntityRepository
 {
+    public function getAllActiveCategorie()
+    {
+        // On récupère les résultats à partir de la Query
+        return $this->getAllActiveCategorieQueryBuilder()
+                ->getQuery()
+                ->getResult();
+    }
+
+    public function getAllActiveCategorieQueryBuilder()
+    {
+        // La construction de la requête reste inchangée
+        return $this->createQueryBuilder('a')
+            ->where('a.isActive = :isact')
+            ->setParameters(array(':isact'=> true));
+    }
 }

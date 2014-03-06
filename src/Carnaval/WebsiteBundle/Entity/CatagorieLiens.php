@@ -33,6 +33,13 @@ class CatagorieLiens
      */
     private $liens;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="isActive", type="boolean")
+     */
+    private $isActive;
+
     public function __construct()
     {
         $this->liens = new \Doctrine\Common\Collections\ArrayCollection();
@@ -108,6 +115,28 @@ class CatagorieLiens
     public function setLiens($liens)
     {
         return $this->liens = $liens;
+    }
+
+    /**
+     * Set isActive
+     *
+     * @param boolean $isActive
+     * @return CatagorieLiens
+     */
+    public function setIsActive($isActive)
+    {
+        $this->isActive = $isActive;
+    
         return $this;
+    }
+
+    /**
+     * Get isActive
+     *
+     * @return boolean 
+     */
+    public function getIsActive()
+    {
+        return $this->isActive;
     }
 }

@@ -1,0 +1,20 @@
+{# src/Carnaval/WebsiteBundle/Resources/views/Website/index.html.twig #}
+ 
+{% extends "::layout.html.twig" %}
+
+{% block title %}
+  Admin - Supprimer un Lien - {{ parent() }}
+{% endblock %}
+
+{% block carnaval_contenu %}
+    <form class="form-horizontal well" id="formulaire" method="post" name={{ formName }}>
+        <fieldset>
+            <legend style="color:#fff;">Supprimer ce Lien :</legend>
+            {{ link.name }} : {{ link.description|raw|nl2br }}
+            <br />
+            <input type="submit" class="btn btn-primary" value="Supprimer" />
+            <input name="cancel" class="btn" type="submit" value="Cancel" formnovalidate/>
+        </fieldset>
+    </form>
+
+{% endblock %}

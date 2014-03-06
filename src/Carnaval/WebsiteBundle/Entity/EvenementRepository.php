@@ -18,7 +18,7 @@ class EvenementRepository extends EntityRepository
         $query = $this->createQueryBuilder('a')
             ->where('a.isDeleted = :isdel')
             ->andWhere('a.eventDate >= :eventDate')
-            ->setParameters(array(':isdel'=> false, ':eventDate'=> $date))
+            ->setParameters(array(':isdel'=> true, ':eventDate'=> $date))
             ->orderBy('a.eventDate', 'ASC')
             ->getQuery();
 

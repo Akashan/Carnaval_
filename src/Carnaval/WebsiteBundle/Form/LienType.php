@@ -2,6 +2,7 @@
 
 namespace Carnaval\WebsiteBundle\Form;
 
+use Carnaval\WebsiteBundle\Entity\CatagorieLiensRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -13,6 +14,9 @@ class LienType extends AbstractType
         $builder
             ->add('categorie', 'entity', array(
                 'class'    => 'CarnavalWebsiteBundle:CatagorieLiens',
+                'query_builder' => function(CatagorieLiensRepository $er) {
+                    return $er->getAllActiveCategorieQueryBuilder();
+                },
                 'property' => 'name',
                 'multiple' => false,
                 'expanded' => false,
