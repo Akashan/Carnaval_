@@ -110,8 +110,15 @@
                                                     <li><a href="{{ path('carnaval_website_adm_evenement_ajout') }}">Ajouter un événement</a></li>
                                                 </ul>
                                             </li>
+                                            <li class="dropdown-submenu"> <a class="dropdown-toggle" data-toggle="dropdown" href="#">Vidéos<b class="caret"></b> </a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="{{ path('carnaval_website_adm_categories_videos') }}">Liste des catégories</a></li>
+                                                    <li><a href="{{ path('carnaval_website_adm_videos') }}">Liste des vidéos</a></li>
+                                                    <li><a href="{{ path('carnaval_website_adm_categorie_videos_ajout') }}">Ajouter une catégorie</a></li>
+                                                    <li><a href="{{ path('carnaval_website_adm_video_ajout') }}">Ajouter une vidéo</a></li>
+                                                </ul>
+                                            </li>
                                             <li><a href="{{ path('carnaval_website_adm_images') }}">Images</a></li>
-                                            <li><a href="{{ path('carnaval_website_adm_videos') }}">Vidéos</a></li>
                                         </ul>
                                     </li>
                                 {% endif %}

@@ -7,25 +7,12 @@
 {% endblock %}
 
 {% block carnaval_contenu %}
-    <form class="form-horizontal well" id="formulaire" method="post" name={{ formName }} {{ form_enctype(form) }}>
+    <form class="form-horizontal well" id="formulaire" method="post" name={{ formName }}>
         <fieldset>
             <legend style="color:#fff;">Supprimer l'événement</legend>
-            {{ form_widget(form) }}
-            <script type="text/javascript">
-
-                var nowTemp = new Date();
-                var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
-
-                var checkin = $('.datepicker').datepicker({
-                    format: 'dd/mm/yyyy',
-                    onRender: function(date) {
-                        return date.valueOf() < now.valueOf() ? 'disabled' : '';
-                    }
-                }).data('datepicker');
-
-            </script>
+            <p>{{ event.name }} - {{ event.lieu }} :<br />{{ event.description|raw|nl2br }}</p>
             <br />
-            <input type="submit" class="btn btn-primary" />
+            <input type="submit" class="btn btn-primary" value="Supprimer" />
             <input name="cancel" class="btn" type="submit" value="Cancel" formnovalidate/>
         </fieldset>
     </form>

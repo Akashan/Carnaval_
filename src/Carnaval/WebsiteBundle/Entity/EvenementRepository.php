@@ -27,4 +27,19 @@ class EvenementRepository extends EntityRepository
 
         return $resultats;
     }
+
+    public function getAllActiveEvents()
+{
+    // La construction de la requête reste inchangée
+    $query = $this->createQueryBuilder('a')
+        ->where('a.isDeleted = :isdel')
+        ->setParameters(array(':isdel'=> true))
+        ->orderBy('a.eventDate', 'ASC')
+        ->getQuery();
+
+    // On récupère les résultats à partir de la Query
+    $resultats = $query->getResult();
+
+    return $resultats;
+}
 }

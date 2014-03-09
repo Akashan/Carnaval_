@@ -66,9 +66,11 @@ carnaval_website_adm_videos:
 carnaval_website_adm_liens:
     path:  /adm_liens
     defaults: { _controller: CarnavalWebsiteBundle:Website:admLiens }
+
 carnaval_website_adm_categories:
     path:  /adm_categories
     defaults: { _controller: CarnavalWebsiteBundle:Website:admCategories }
+
 carnaval_website_adm_events:
     path:  /adm_events
     defaults: { _controller: CarnavalWebsiteBundle:Website:admEvenements }
