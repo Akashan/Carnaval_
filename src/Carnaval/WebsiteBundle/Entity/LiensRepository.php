@@ -17,7 +17,7 @@ class LiensRepository extends EntityRepository
         // La construction de la requête reste inchangée
         $query = $this->createQueryBuilder('a')
             ->where('a.isActive = :isact')
-            ->andWhere('a.categorie >= :categorie')
+            ->andWhere('a.categorie = :categorie')
             ->setParameters(array(':isact'=> true, ':categorie'=> $categorie))
             ->getQuery();
 

@@ -7,5 +7,26 @@
 {% endblock %}
  
 {% block carnaval_contenu %}
-
+    <table class="table table-bordered table-condensed">
+        {% for categorie in categories %}
+            <thead>
+            <tr>
+                <th colspan="2">{{ categorie.name }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for video in categorie.videos %}
+                <tr>
+                    <td>{{ video.name }}</td>
+                    <td style="width: 20%">
+                        <div class="btn-group">
+                            <a class="btn btn-warning" href="{{ path('carnaval_website_adm_videos_modifier', {'id': video.id}) }}">Modifier</a>
+                            <a class="btn btn-danger" href="{{ path('carnaval_website_adm_videos_supprimer', {'id': video.id}) }}">Supprimer</a>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        {% endfor %}
+    </table>
 {% endblock %}

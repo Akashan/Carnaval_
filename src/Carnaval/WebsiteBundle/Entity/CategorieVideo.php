@@ -40,6 +40,11 @@ class CategorieVideo
      */
     private $isActive;
 
+    public function __construct()
+    {
+        // Rappelez-vous, on a un attribut qui doit contenir un ArrayCollection, on doit l'initialiser dans le constructeur
+        $this->videos = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id

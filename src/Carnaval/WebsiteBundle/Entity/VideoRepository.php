@@ -31,13 +31,12 @@ class VideoRepository extends EntityRepository
         // La construction de la requête reste inchangée
         $query = $this->createQueryBuilder('a')
             ->where('a.isActive = :isact')
-            ->andWhere('a.categorie >= :categorie')
+            ->andWhere('a.categorie = :categorie')
             ->setParameters(array(':isact'=> true, ':categorie'=> $categorie))
             ->getQuery();
 
         // On récupère les résultats à partir de la Query
         $resultats = $query->getResult();
-
         return $resultats;
     }
 }

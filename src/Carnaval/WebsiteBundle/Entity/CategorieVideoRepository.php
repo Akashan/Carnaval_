@@ -25,6 +25,7 @@ class CategorieVideoRepository extends EntityRepository
         // La construction de la requête reste inchangée
         return $this->createQueryBuilder('a')
             ->where('a.isActive = :isact')
-            ->setParameters(array(':isact'=> true));
+            ->setParameters(array(':isact'=> true))
+            ->orderBy('a.name', 'ASC');
     }
 }
