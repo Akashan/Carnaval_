@@ -104,7 +104,7 @@ class CategorieVideo
      * @param \Carnaval\WebsiteBundle\Entity\Video $videos
      * @return CategorieVideo
      */
-    public function addLien(\Carnaval\WebsiteBundle\Entity\Video $video)
+    public function addVideo(\Carnaval\WebsiteBundle\Entity\Video $video)
     {
         $this->videos[] = $video;
 
@@ -116,7 +116,7 @@ class CategorieVideo
      *
      * @param \Carnaval\WebsiteBundle\Entity\Video $videos
      */
-    public function removeLien(\Carnaval\WebsiteBundle\Entity\Video $video)
+    public function removeVideo(\Carnaval\WebsiteBundle\Entity\Video $video)
     {
         $this->videos->removeElement($video);
     }
@@ -126,12 +126,12 @@ class CategorieVideo
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getLiens()
+    public function getVideos()
     {
         return $this->videos;
     }
 
-    public function setLiens($videos)
+    public function setVideos($videos)
     {
         return $this->videos = $videos;
     }

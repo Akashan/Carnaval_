@@ -12,5 +12,32 @@ use Doctrine\ORM\EntityRepository;
  */
 class VideoRepository extends EntityRepository
 {
+    public function getActiveVideos()
+    {
+        // La construction de la requête reste inchangée
+        $query = $this->createQueryBuilder('a')
+            ->where('a.isActive = :isdel')
+            ->setParameter(':isdel', false)
+            ->getQuery();
 
+        // On récupère les résultats à partir de la Query
+        $resultats = $query->getResult();
+
+        return $resultats;
+    }
+
+    public function getAllActiveVideos($categorie)
+    {
+        // La construction de la requête reste inchangée
+        $query = $this->createQueryBuilder('a')
+            ->where('a.isActive = :isact')
+            ->andWhere('a.categorie >= :categorie')
+            ->setParameters(array(':isact'=> true, ':categorie'=> $categorie))
+            ->getQuery();
+
+        // On récupère les résultats à partir de la Query
+        $resultats = $query->getResult();
+
+        return $resultats;
+    }
 }

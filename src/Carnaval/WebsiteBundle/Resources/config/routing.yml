@@ -22,9 +22,9 @@ carnaval_website_voir_galeries:
 carnaval_website_videos:
     path:  /videos
     defaults: { _controller: CarnavalWebsiteBundle:Website:videos }
-carnaval_website_voir_videos:
-    path:  /videos/{id}
-    defaults: { _controller: CarnavalWebsiteBundle:Website:voirVideos }
+carnaval_website_voir_video:
+    path:  /video/{id}
+    defaults: { _controller: CarnavalWebsiteBundle:Website:voirVideo }
 carnaval_website_contacts:
     path:  /contacts
     defaults: { _controller: CarnavalWebsiteBundle:Website:contacts }
@@ -62,6 +62,16 @@ carnaval_website_adm_images:
 carnaval_website_adm_videos:
     path:  /adm_videos
     defaults: { _controller: CarnavalWebsiteBundle:Website:admVideos }
+carnaval_website_adm_video_ajout:
+    path:  /adm_videos_ajout
+    defaults: { _controller: CarnavalWebsiteBundle:Website:admVideosAjout }
+
+carnaval_website_adm_categories_videos:
+    path:  /adm_categories_videos
+    defaults: { _controller: CarnavalWebsiteBundle:Website:admCategorieVideos }
+carnaval_website_adm_categorie_videos_ajout:
+    path:  /adm_categories_videos_ajout
+    defaults: { _controller: CarnavalWebsiteBundle:Website:admCategorieVideosAjout }
 
 carnaval_website_adm_liens:
     path:  /adm_liens

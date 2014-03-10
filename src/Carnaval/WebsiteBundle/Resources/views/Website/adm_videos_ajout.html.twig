@@ -1,0 +1,119 @@
+{# src/Carnaval/WebsiteBundle/Resources/views/Website/index.html.twig #}
+ 
+{% extends "::layout.html.twig" %}
+ 
+{% block title %}
+  Admin - Ajout Vidéos - {{ parent() }}
+{% endblock %}
+ 
+{% block carnaval_contenu %}
+    <div class="well">
+        <form method="post" name={{ formName }} {{ form_enctype(form) }}>
+            {{ form_widget(form) }}
+            <input type="hidden" name="ytCaller" id="ytCaller" value="" />
+            <script type="text/javascript">
+
+                function youtubeDataCallback(data) {
+
+                    var $formName =  $('div.well Form').attr('name');
+
+                    $('div#divMin').remove();
+
+                    var $miniatureContainer = $('input#carnaval_websitebundle_videotype_miniature').parent();
+                    var $divMiniature = $('<div id="divMin" class="row-fluid">');
+                    $miniatureContainer.append($divMiniature);
+                    for (var i=0;i<data.entry.media$group.media$thumbnail.length;i++)
+                    {
+                        $('img#ytMin'+i).parent().remove();
+                        var $imgMiniature = $('<div style="float:left; margin-bottom:10px; margin-right:10px; border:0px solid red;">' +
+                                '<img id="ytMin'+i+'" style="width:120px; " src="'+data.entry.media$group.media$thumbnail[i].url+'" />' +
+                                '<br>' +
+                                '<span>'+data.entry.media$group.media$thumbnail[i].width+'x'+data.entry.media$group.media$thumbnail[i].height+'</span>' +
+                                '</div>');
+
+                        $miniatureContainer.append($imgMiniature);
+
+                        if($formName == "MODIFVID" && $('#carnaval_websitebundle_videotype_miniature').val() == data.entry.media$group.media$thumbnail[i].url)
+                        {
+                            $('img#ytMin'+i).parent().css("border", "1px solid red");
+                            $('img#ytMin'+i).parent().css("margin-bottom", "8px");
+                            $('img#ytMin'+i).parent().css("margin-right", "8px");
+                        }
+
+                        $('img#ytMin'+i).click(function ()
+                        {
+                            for (var i=0;i<data.entry.media$group.media$thumbnail.length;i++)
+                            {
+                                $('img#ytMin'+i).parent().css("border", "0px solid red");
+                                $('img#ytMin'+i).parent().css("margin-bottom", "10px");
+                                $('img#ytMin'+i).parent().css("margin-right", "10px");
+                            }
+
+                            $(this).parent().css("border", "1px solid red");
+                            $(this).parent().css("margin-bottom", "8px");
+                            $(this).parent().css("margin-right", "8px");
+                            $('#carnaval_websitebundle_videotype_miniature').val($(this).attr('src'));
+                            return false;
+                        });
+                    }
+
+                    if($('input#ytCaller').val() == "btImport")
+                    {
+                        var titre = data.entry.title.$t;
+                        //alert(titre);
+                        $('#carnaval_websitebundle_videotype_name').val(titre);
+
+                        var description = data.entry.media$group.media$description.$t;
+                        //alert(description);
+                        $('#carnaval_websitebundle_videotype_description').val(description);
+                    }
+                }
+
+                var nowTemp = new Date();
+                var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+
+                var checkin = $('.datepicker').datepicker({
+                    format: 'dd/mm/yyyy',
+                    onRender: function(date) {
+                        return date.valueOf() < now.valueOf() ? 'disabled' : '';
+                    }
+                }).data('datepicker');
+
+                $(document).ready(function() {
+
+                    $('textarea#carnaval_websitebundle_videotype_description').parent().css("clear", "both");
+
+                    var $urlContainer = $('input#carnaval_websitebundle_videotype_codeExterne').parent();
+                    var $lienImport = $('<a href="#" id="importData" style="margin-top: -10px; margin-left: 2px;" class="btn btn-info btn-mini"><i class="icon-white icon-refresh"></i> Importez les données</a>');
+                    $urlContainer.append($lienImport);
+
+                    $lienImport.click(function(e) {
+
+                        var videoid = $('#carnaval_websitebundle_videotype_codeExterne').val();
+                        var m;
+                        if (m = videoid.match(/^http:\/\/www\.youtube\.com\/.*[?&]v=([^&]+)/i) || videoid.match(/^http:\/\/youtu\.be\/([^?]+)/i)) {
+                            videoid = m[1];
+                        }
+                        if (!videoid.match(/^[a-z0-9_-]{11}$/i)) {
+                            alert('Unable to parse Video ID/URL.');
+                            return;
+                        }
+                        $('input#ytCaller').val("btImport");
+                        $.getScript('http://gdata.youtube.com/feeds/api/videos/' + encodeURIComponent(videoid) + '?v=2&alt=json-in-script&callback=youtubeDataCallback');
+
+                        return false;
+                    });
+
+                    var videoid = $('#carnaval_websitebundle_videotype_codeExterne').val();
+                    if(videoid){
+                        $('input#ytCaller').val("modif");
+                        $.getScript('http://gdata.youtube.com/feeds/api/videos/' + encodeURIComponent(videoid) + '?v=2&alt=json-in-script&callback=youtubeDataCallback');
+                    }
+
+                });
+            </script>
+            <input type="submit" class="btn btn-primary" />
+            <input name="cancel" class="btn" type="submit" value="Cancel" formnovalidate/>
+        </form>
+    </div>
+{% endblock %}

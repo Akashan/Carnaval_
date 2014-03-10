@@ -7,5 +7,22 @@
 {% endblock %}
  
 {% block carnaval_contenu %}
+    {% for categorie in categories %}
+        <div class="accordion-group">
+            <div class="accordion-heading"> <a class="accordion-toggle" href="#item1" data-toggle="collapse" style="text-align: center; text-transform: uppercase; font-weight: bold; color:#000000; background-color: #ffffff;"> {{ categorie.name }} </a> </div>
+            <div id="item1" class="collapse">
+                <div class="accordion-inner">
+                    {% for video in categorie.videos %}
+                        <div style="float:left;margin:10px;">
+                            <a href="{{ path('carnaval_website_voir_video', {'id': video.id }) }}">
+                                <span style="font-size:12px;">{{ video.name|length > 50 ? video.name|slice(0, 50) ~ '...' : video.name }}</span><br>
+                                <img src="{{ video.miniature }}" style="height:180px;width:320px;border:1px solid #000;"><br>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
 
 {% endblock %}

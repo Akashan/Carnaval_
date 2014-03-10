@@ -3,9 +3,16 @@
 {% extends "::layout.html.twig" %}
  
 {% block title %}
-  Vidéo - {{ parent() }}
+  Vidéo - {{ video.name }} - {{ parent() }}
 {% endblock %}
  
 {% block carnaval_contenu %}
-
+    <div class="row-fluid">
+        <div class="span12">
+            <h2>{{ video.name }}</h2>
+            <iframe width="560" height="315" src="//www.youtube.com/embed/{{ video.codeExterne }}" frameborder="0" allowfullscreen></iframe><br>
+            <p>{{ video.description|raw|nl2br }}</p>
+            <br>
+        </div>
+    </div>
 {% endblock %}
