@@ -14,6 +14,8 @@
             <excludedPath path="/app/cache" />
             <excludedPath path="/app/logs" />
             <excludedPath path="/app/config/parameters.yml" />
+            <excludedPath local="true" path="$PROJECT_DIR$/vendor" />
+            <excludedPath path="/vendor" />
           </excludedPaths>
         </serverdata>
       </paths>
