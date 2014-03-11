@@ -17,3 +17,7 @@ services:
             - [ setContainer, [ @service_container ] ]
         tags:
             - { name: 'monolog.logger', channel: 'security' }
+    carnaval.twig.datetime_extension:
+        class: Carnaval\WebsiteBundle\Twig\DateTimeExtension
+        tags:
+            - { name: twig.extension }

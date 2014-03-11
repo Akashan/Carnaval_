@@ -8,8 +8,7 @@
     <h2 class="text-center">Evénements à venir</h2>
     {% for key,value in events %}
         {% if value|length != 0 %}
-            <h4>Au mois de {{ key|date('F Y') }}</h4>
-            <!--h4>Au mois de {{ key|strftime('%B %G') }}</h4-->
+            <h4>Au mois de {{ key|toDateString('%B %Y') }}</h4>
         {% endif %}
         {% for event in value %}
             <span style="text-transform:uppercase; font-weight:bold">{{ event.lieu }}</span> - Le {{ event.eventDate|date('d/m/Y') }}<span></span>
