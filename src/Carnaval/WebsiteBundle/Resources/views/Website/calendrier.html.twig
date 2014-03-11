@@ -1,5 +1,3 @@
-{# src/Carnaval/WebsiteBundle/Resources/views/Website/index.html.twig #}
- 
 {% extends "::layout.html.twig" %}
  
 {% block title %}
@@ -11,6 +9,7 @@
     {% for key,value in events %}
         {% if value|length != 0 %}
             <h4>Au mois de {{ key|date('F Y') }}</h4>
+            <!--h4>Au mois de {{ key|strftime('%B %G') }}</h4-->
         {% endif %}
         {% for event in value %}
             <span style="text-transform:uppercase; font-weight:bold">{{ event.lieu }}</span> - Le {{ event.eventDate|date('d/m/Y') }}<span></span>
