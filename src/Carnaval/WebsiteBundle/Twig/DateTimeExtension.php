@@ -12,7 +12,8 @@ class DateTimeExtension extends \Twig_Extension
 
     public function toDateString($date, $format)
     {
-        setlocale(LC_TIME, "fr_FR");
+        //setlocale(LC_ALL, "fr-FR");
+        setlocale (LC_TIME, 'fr_FR.utf8','fra');
         return strftime($format,strtotime($date));
     }
 

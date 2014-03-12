@@ -5,18 +5,40 @@
 {% endblock %}
  
 {% block carnaval_contenu %}
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     <h2 class="text-center">Evénements à venir</h2>
     {% for key,value in events %}
         {% if value|length != 0 %}
-            <h4>Au mois de {{ key|toDateString('%B %Y') }}</h4>
+            <h4 style="text-align: center; color: red; font-weight: bolder;">{{ key|toDateString('%B %Y')|capitalize }}</h4>
         {% endif %}
         {% for event in value %}
-            <span style="text-transform:uppercase; font-weight:bold">{{ event.lieu }}</span> - Le {{ event.eventDate|date('d/m/Y') }}<span></span>
-            <p>{{ event.name }} :<br />{{ event.description|raw|nl2br }}</p>
-            <hr />
+            <script>
+                $(function() {
+                    $( "#dialog{{ event.id }}" ).dialog({
+                        autoOpen: false,
+                        show: {
+                            effect: "blind",
+                            duration: 500
+                        },
+                        hide: {
+                            effect: "blind",
+                            duration: 500
+                        }
+                    });
+
+                    $( "#opener{{ event.id }}" ).click(function() {
+                        $( "#dialog{{ event.id }}" ).dialog( "open" );
+                    });
+                });
+            </script>
+            <a id="opener{{ event.id }}" href="#"><span style="text-transform:uppercase; font-weight:bold;">{{ event.lieu }}</span> - Le {{ event.eventDate|date('d/m/Y') }}</a>
+            <div id="dialog{{ event.id }}" title="{{ event.lieu }} - Le {{ event.eventDate|date('d/m/Y') }}">
+                <p>{{ event.name }} :<br />{{ event.description|raw|nl2br }}</p>
+            </div>
         {% endfor %}
         {% if value|length != 0 %}
-            <br/>
+            <hr />
         {% endif %}
     {% endfor %}
 {% endblock %}
