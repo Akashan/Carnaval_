@@ -24,6 +24,13 @@ class Message
     /**
      * @var string
      *
+     * @ORM\Column(name="business", type="string", length=255)
+     */
+    private $business;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="firstname", type="string", length=255)
      */
     private $firstname;
@@ -360,4 +367,27 @@ class Message
         return $this->security;
     }
 
+
+    /**
+     * Set business
+     *
+     * @param string $business
+     * @return Message
+     */
+    public function setBusiness($business)
+    {
+        $this->business = $business;
+    
+        return $this;
+    }
+
+    /**
+     * Get business
+     *
+     * @return string 
+     */
+    public function getBusiness()
+    {
+        return $this->business;
+    }
 }
