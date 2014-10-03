@@ -1,20 +1,22 @@
 {# app/Resources/views/layout.html.twig #} 
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<META NAME="Author" LANG="fr" CONTENT="Pierre-Antoine DOUCHET">
-    <META NAME="Publisher" CONTENT="Pierre-Antoine DOUCHET">
-    <META NAME="Reply-to" CONTENT="douchet.pantoine@gmail.com (Pierre-Antoine DOUCHET)">
-    <META NAME="Description" CONTENT="Site de la société CARNAVAL ARTIFICES EVENEMENTIELS">
-    <META NAME="Keywords" CONTENT="carnaval, artifices, evenementiels, artifice, evenementiel, feu d'artifice, feux d'artifices, rouen, normandie">
-    <META NAME="Indentifier-URL" CONTENT="http://www.carnaval-artifices-evenementiel.com/">
-    <META NAME="Copyright" CONTENT="© 2013 Northman Software">
-    <META NAME="Generator" CONTENT="PhpStorm">
-    <META NAME="Date" CONTENT="30/11/2011">
-    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
-    <META NAME="Robots" CONTENT="All">
-    <META NAME="Revisit-after" CONTENT="15">
+	<meta NAME="author" LANG="fr" CONTENT="Pierre-Antoine DOUCHET" />
+    <meta NAME="language" CONTENT="French" />
+    <meta NAME="description" CONTENT="CARNAVAL ARTIFICES EVENEMENTIELS, le spécialiste Normands du spectacle pyrotechnique." />
+    <meta NAME="keywords" CONTENT="carnaval, artifices, evenementiels, artifice, evenementiel, feu d'artifice, feux d'artifices, rouen, normandie" />
+    <meta NAME="copyright" CONTENT="© 2014 Northman Software" />
+
+    <meta name="contact" content="douchet.pantoine@gmail.com" />
+    <meta NAME="Robots" CONTENT="All">
+    <meta name="googlebot" content="archive" />
+    <meta NAME="revisit-after" CONTENT="15">
+    <meta http-equiv="content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="content-Language" content="fr" />
+    <meta http-equiv="content-Script-Type" content="text/javascript" />
+    <meta http-equiv="last-modified" content="2014-10-02@01:00:00 PM" />
+    <meta http-equiv="cache-control" content="public" />
  
     <title>{% block title %}CARNAVAL Artifices Evénementiels{% endblock %}</title>
  
@@ -22,14 +24,6 @@
       <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" type="text/css" />
       <link rel="stylesheet" href="{{ asset('css/carnaval.css') }}" type="text/css" />
       <link rel="stylesheet" href="{{ asset('css/datepicker.css') }}" type="text/css" />
-    {% endblock %}
-
-    {% block javascripts %}
-      {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
-      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-      <script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
-      <script type="text/javascript" src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
-      {{ tinymce_init() }}
     {% endblock %}
 
       <style>
@@ -64,7 +58,7 @@
         }
     </style>
 
-  </head> 
+  </head>
   <body>
     <div class="wrapper">
 		<nav class="navbar navbar-inverse navbar-static-top">
@@ -152,6 +146,25 @@
         <p class="muted credit" style="text-align: center; font-size: 10px;">Tous droit réservés - Carnaval Artifices Evénementiel SARL au capital de 7 500&#8364; | SIRET 53309793700015 | R.C.S ROUEN 533 097 937</p>
       </div>
     </footer>
+
+    {% block javascripts %}
+        {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
+        {{ tinymce_init() }}
+    {% endblock %}
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-15187735-4', 'auto');
+        ga('send', 'pageview');
+
+    </script>
 
   </body>
 </html>
