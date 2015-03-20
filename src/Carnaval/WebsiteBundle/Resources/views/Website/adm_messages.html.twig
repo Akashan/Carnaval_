@@ -9,14 +9,14 @@
 {% block carnaval_contenu %}
     <table class="table table-bordered table-condensed" id="messageTable">
         <thead>
-        <tr>
-            <th>&nbsp;</th>
-            <th>Reçu le</th>
-            <th>Nom</th>
-            <th>Email</th>
-            <th>Objet</th>
-            <th>&nbsp;</th>
-        </tr>
+            <tr>
+                <th style="width: 10px;">&nbsp;</th>
+                <th style="width: 90px;">Reçu le</th>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Objet</th>
+                <th style="width: 200px;">&nbsp;</th>
+            </tr>
         </thead>
         <tbody>
         {% for message in messages %}
@@ -49,7 +49,16 @@
     <script>
         $(document).ready(function(){
             $('#messageTable').DataTable({
-                paging: false
+                paging: false,
+                "order": [[ 1, "desc" ]],
+                "columns": [
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    { "orderable": false }
+                ]
             });
         });
     </script>
