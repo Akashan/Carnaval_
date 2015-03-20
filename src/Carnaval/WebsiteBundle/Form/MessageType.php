@@ -13,7 +13,7 @@ class MessageType extends AbstractType
         $builder
             ->add('business','text', array(
                 'label' => "Société",
-                'required' => false,
+                'required' => true,
             ))
             ->add('lastName','text', array(
                 'label' => "Nom",
