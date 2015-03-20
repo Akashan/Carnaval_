@@ -28,7 +28,7 @@
                         <img src="{{ asset('img/unread.png') }}" width="25px" />
                     {% endif %}
                 </td>
-                <td>{{ message.receiveDate|date("d/m/Y \\à H:i") }}</td>
+                <td>{{ message.receiveDate|date("d.m.Y") }}</td>
                 <td>{{ message.lastName }} {{ message.firstName }}</td>
                 <td>{{ message.email }}</td>
                 <td>{{ message.objet }}</td>
@@ -47,13 +47,60 @@
 
 {% block javascripts %}
     <script>
+
         $(document).ready(function(){
+
+            jQuery.extend( jQuery.fn.dataTableExt.oSort, {
+                "date-eu-pre": function ( date ) {
+                    var eu_date, year;
+                    date = date.replace(" ", "");
+
+                    if (date.indexOf('.') > 0) {
+                        /*date a, format dd.mn.(yyyy) ; (year is optional)*/
+                        eu_date = date.split('.');
+                    } else {
+                        /*date a, format dd/mn/(yyyy) ; (year is optional)*/
+                        eu_date = date.split('/');
+                    }
+
+                    /*year (optional)*/
+                    if (eu_date[2]) {
+                        year = eu_date[2];
+                    } else {
+                        year = 0;
+                    }
+
+                    /*month*/
+                    var month = eu_date[1];
+                    if (month.length == 1) {
+                        month = 0+month;
+                    }
+
+                    /*day*/
+                    var day = eu_date[0];
+                    if (day.length == 1) {
+                        day = 0+day;
+                    }
+
+                    return (year + month + day) * 1;
+                },
+
+                "date-eu-asc": function ( a, b ) {
+                    return ((a < b) ? -1 : ((a > b) ? 1 : 0));
+                },
+
+                "date-eu-desc": function ( a, b ) {
+                    return ((a < b) ? 1 : ((a > b) ? -1 : 0));
+                }
+            } );
+
+
             $('#messageTable').DataTable({
                 paging: false,
                 "order": [[ 1, "desc" ]],
                 "columns": [
-                    null,
-                    null,
+                    { "orderable": false },
+                    { "type" : "date-eu" },
                     null,
                     null,
                     null,
