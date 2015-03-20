@@ -7,10 +7,11 @@
 {% endblock %}
  
 {% block carnaval_contenu %}
-    <table class="table table-bordered table-condensed">
+    <table class="table table-bordered table-condensed" id="messageTable">
         <thead>
         <tr>
             <th>&nbsp;</th>
+            <th>Reçu le</th>
             <th>Nom</th>
             <th>Email</th>
             <th>Objet</th>
@@ -27,6 +28,7 @@
                         <img src="{{ asset('img/unread.png') }}" width="25px" />
                     {% endif %}
                 </td>
+                <td>{{ message.receiveDate|date("d/m/Y \\à H:i") }}</td>
                 <td>{{ message.lastName }} {{ message.firstName }}</td>
                 <td>{{ message.email }}</td>
                 <td>{{ message.objet }}</td>
@@ -41,4 +43,14 @@
         {% endfor %}
         </tbody>
     </table>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(document).ready(function(){
+            $('#messageTable').DataTable({
+                paging: false
+            });
+        });
+    </script>
 {% endblock %}

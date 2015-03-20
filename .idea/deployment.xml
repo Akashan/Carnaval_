@@ -1,25 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="Dédié PAD - Carnaval">
-    <serverData>
-      <paths name="Dédié PAD - Carnaval">
-        <serverdata>
-          <mappings>
-            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
-          </mappings>
-          <excludedPaths>
-            <excludedPath local="true" path="$PROJECT_DIR$/app/cache" />
-            <excludedPath local="true" path="$PROJECT_DIR$/app/logs" />
-            <excludedPath local="true" path="$PROJECT_DIR$/app/config/parameters.yml" />
-            <excludedPath path="/app/cache" />
-            <excludedPath path="/app/logs" />
-            <excludedPath path="/app/config/parameters.yml" />
-            <excludedPath local="true" path="$PROJECT_DIR$/vendor" />
-            <excludedPath path="/vendor" />
-          </excludedPaths>
-        </serverdata>
-      </paths>
-    </serverData>
-  </component>
+  <component name="PublishConfigData" serverName="Dédié PAD - Carnaval" />
 </project>
-

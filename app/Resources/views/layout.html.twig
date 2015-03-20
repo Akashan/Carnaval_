@@ -19,11 +19,13 @@
     <meta http-equiv="cache-control" content="public" />
  
     <title>{% block title %}CARNAVAL Artifices Evénementiels{% endblock %}</title>
- 
+
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('css/carnaval.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('css/datepicker.css') }}" type="text/css" />
+      <link rel="stylesheet" href="{{ asset('css/datatables.css') }}" type="text/css" />
+
     {% block stylesheets %}
-      <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" type="text/css" />
-      <link rel="stylesheet" href="{{ asset('css/carnaval.css') }}" type="text/css" />
-      <link rel="stylesheet" href="{{ asset('css/datepicker.css') }}" type="text/css" />
     {% endblock %}
 
       <style>
@@ -147,12 +149,15 @@
       </div>
     </footer>
 
+    {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.5/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
+    {{ tinymce_init() }}
+
     {% block javascripts %}
-        {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-        <script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
-        {{ tinymce_init() }}
+
     {% endblock %}
 
     <script>
