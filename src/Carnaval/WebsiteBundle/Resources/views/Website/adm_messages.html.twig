@@ -43,6 +43,13 @@
         {% endfor %}
         </tbody>
     </table>
+
+    <style>
+        #messageTable_length {
+            display: none;
+        }
+    </style>
+
 {% endblock %}
 
 {% block javascripts %}
@@ -96,8 +103,8 @@
 
 
             $('#messageTable').DataTable({
-                paging: false,
                 "order": [[ 1, "desc" ]],
+                "iDisplayLength": 20,
                 "columns": [
                     { "orderable": false },
                     { "type" : "date-eu" },
