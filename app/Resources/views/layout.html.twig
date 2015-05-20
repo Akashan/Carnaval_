@@ -1,179 +1,142 @@
 {# app/Resources/views/layout.html.twig #} 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
-  <head>
-	<meta NAME="author" LANG="fr" CONTENT="Pierre-Antoine DOUCHET" />
-    <meta NAME="language" CONTENT="French" />
-    <meta NAME="description" CONTENT="CARNAVAL ARTIFICES EVENEMENTIELS, le spécialiste Normands du spectacle pyrotechnique." />
-    <meta NAME="keywords" CONTENT="carnaval, artifices, evenementiels, artifice, evenementiel, feu d'artifice, feux d'artifices, rouen, normandie" />
-    <meta NAME="copyright" CONTENT="© 2014 Northman Software" />
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content="CARNAVAL Artifices Evénementiels, le spécialiste Normands du spectacle pyrotechnique." />
+        <meta name="viewport" content="initial-scale=1"/>
 
-    <meta name="contact" content="douchet.pantoine@gmail.com" />
-    <meta NAME="Robots" CONTENT="All">
-    <meta name="googlebot" content="archive" />
-    <meta NAME="revisit-after" CONTENT="15">
-    <meta http-equiv="content-Type" content="text/html; charset=utf-8" />
-    <meta http-equiv="content-Language" content="fr" />
-    <meta http-equiv="content-Script-Type" content="text/javascript" />
-    <meta http-equiv="last-modified" content="2014-10-02@01:00:00 PM" />
-    <meta http-equiv="cache-control" content="public" />
- 
-    <title>{% block title %}CARNAVAL Artifices Evénementiels{% endblock %}</title>
+        <meta property="og:title" content="CARNAVAL Artifices Evénementiels" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://www.carnaval-artifices-evenementiel.com/" />
+        <meta property="og:image" content="http://www.carnaval-artifices-evenementiel.com/img/logo_main.png" />
+        <meta property="og:description" content="CARNAVAL Artifices Evénementiels, le spécialiste Normands du spectacle pyrotechnique." />
+        <meta property="og:locale" content="fr_FR" />
 
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" type="text/css" />
-    <link rel="stylesheet" href="{{ asset('css/carnaval.css') }}" type="text/css" />
-    <link rel="stylesheet" href="{{ asset('css/datepicker.css') }}" type="text/css" />
-      <link rel="stylesheet" href="{{ asset('css/datatables.css') }}" type="text/css" />
+        <title>{% block title %}CARNAVAL Artifices Evénementiels{% endblock %}</title>
 
-    {% block stylesheets %}
-    {% endblock %}
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" type="text/css" />
+        <link rel="stylesheet" href="{{ asset('css/carnaval.css') }}" type="text/css" />
+        <link rel="stylesheet" href="{{ asset('css/datepicker.css') }}" type="text/css" />
+        <link rel="stylesheet" href="{{ asset('css/datatables.css') }}" type="text/css" />
 
-      <style>
-        html, body {
-            height: 100%;
-        }
-        footer {
-            color: #666;
-            background: #222;
-            padding: 17px 0 18px 0;
-            border-top: 1px solid #000;
-        }
-        footer a {
-            color: #999;
-        }
-        footer a:hover {
-            color: #efefef;
-        }
-        .wrapper {
-            min-height: 100%;
-            height: auto !important;
-            height: 100%;
-            margin-bottom: -63px;
-        }
+        {% block stylesheets %}
+        {% endblock %}
 
-        .push {
-            height: 63px;
-        }
-        /* not required for sticky footer; just pushes hero down a bit */
-        .wrapper > .container {
-            padding-top: 0px;
-        }
-    </style>
-
-  </head>
-  <body>
-    <div class="wrapper">
-		<nav class="navbar navbar-inverse navbar-static-top">
-			<div class="navbar-inner">
-				<div class="container">
-                    <div class="nav-collapse">
-                        <ul class="nav">
-                            <li> <a href="#"></a> </li>
-                            <li> <a href="#"></a> </li>
-                            <li> <a href="{{ path('carnaval_website_accueil') }}">Accueil</a> </li>
-                            <li> <a href="{{ path('carnaval_website_presentation') }}">Présentation</a> </li>
-                            <li> <a href="{{ path('carnaval_website_references') }}">Références</a> </li>
-                            <li> <a href="{{ path('carnaval_website_catalogue') }}">Prêt à Tirer&reg;</a> </li>
-                            <li> <a href="{{ path('carnaval_website_calendrier') }}">Calendrier</a> </li>
-                            <!--li> <a href="{{ path('carnaval_website_galeries') }}">Galeries Photos</a> </li-->
-                            <li> <a href="{{ path('carnaval_website_videos') }}">Vidéos</a> </li>
-                            <li> <a href="{{ path('carnaval_website_contacts') }}">Contacts</a> </li>
-                            <li> <a href="{{ path('carnaval_website_liens') }}">Liens</a> </li>
-                        </ul>
-                        <form class="pull-right" action="">
+    </head>
+    <body>
+        <noscript>Your browser does not support JavaScript!</noscript>
+        <div class="wrapper">
+            <nav class="navbar navbar-inverse navbar-static-top">
+                <div class="navbar-inner">
+                    <div class="container">
+                        <div class="nav-collapse">
                             <ul class="nav">
-                                {% if is_granted('ROLE_ADMIN') %}
-                                    <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="#">Admin<b class="caret"></b> </a>
-                                        <ul class="dropdown-menu">
-                                            <li class="dropdown-submenu"> <a class="dropdown-toggle" data-toggle="dropdown" href="#">Messages<b class="caret"></b> </a>
-                                                <ul class="dropdown-menu">
-                                                    <li><a href="{{ path('carnaval_website_adm_messages') }}">Boite de Reception</a></li>
-                                                    <li><a href="{{ path('carnaval_website_adm_messages_archived') }}">Messages Archivés</a></li>
-                                                    <li><a href="{{ path('carnaval_website_adm_messages_garbage') }}">Corbeille</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="dropdown-submenu"> <a class="dropdown-toggle" data-toggle="dropdown" href="#">Liens<b class="caret"></b> </a>
-                                                <ul class="dropdown-menu">
-                                                    <li><a href="{{ path('carnaval_website_adm_categories') }}">Liste des catégories</a></li>
-                                                    <li><a href="{{ path('carnaval_website_adm_liens') }}">Liste des liens</a></li>
-                                                    <li><a href="{{ path('carnaval_website_adm_categorie_ajout') }}">Ajouter une catégorie</a></li>
-                                                    <li><a href="{{ path('carnaval_website_adm_lien_ajout') }}">Ajouter un lien</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="dropdown-submenu"> <a class="dropdown-toggle" data-toggle="dropdown" href="#">Evenements<b class="caret"></b> </a>
-                                                <ul class="dropdown-menu">
-                                                    <li><a href="{{ path('carnaval_website_adm_events') }}">Liste des événements</a></li>
-                                                    <li><a href="{{ path('carnaval_website_adm_evenement_ajout') }}">Ajouter un événement</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="dropdown-submenu"> <a class="dropdown-toggle" data-toggle="dropdown" href="#">Vidéos<b class="caret"></b> </a>
-                                                <ul class="dropdown-menu">
-                                                    <li><a href="{{ path('carnaval_website_adm_categories_videos') }}">Liste des catégories</a></li>
-                                                    <li><a href="{{ path('carnaval_website_adm_videos') }}">Liste des vidéos</a></li>
-                                                    <li><a href="{{ path('carnaval_website_adm_categorie_videos_ajout') }}">Ajouter une catégorie</a></li>
-                                                    <li><a href="{{ path('carnaval_website_adm_video_ajout') }}">Ajouter une vidéo</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="{{ path('carnaval_website_adm_images') }}">Images</a></li>
-                                        </ul>
-                                    </li>
-                                {% endif %}
-                                <li>{% if is_granted('ROLE_ADMIN') %}<a href="{{ path('logout') }}">Logout</a> {% else %} <a href="{{ path('login') }}">Login</a> {% endif %} </li>
+                                <li> <a href="#"></a> </li>
+                                <li> <a href="#"></a> </li>
+                                <li> <a href="{{ path('carnaval_website_accueil') }}">Accueil</a> </li>
+                                <li> <a href="{{ path('carnaval_website_presentation') }}">Présentation</a> </li>
+                                <li> <a href="{{ path('carnaval_website_references') }}">Références</a> </li>
+                                <li> <a href="{{ path('carnaval_website_catalogue') }}">Prêt à Tirer&#174;</a> </li>
+                                <li> <a href="{{ path('carnaval_website_calendrier') }}">Calendrier</a> </li>
+                                <li> <a href="{{ path('carnaval_website_videos') }}">Vidéos</a> </li>
+                                <li> <a href="{{ path('carnaval_website_contacts') }}">Contacts</a> </li>
+                                <li> <a href="{{ path('carnaval_website_liens') }}">Liens</a> </li>
                             </ul>
-                        </form>
+                            <form class="pull-right" action="#">
+                                <ul class="nav">
+                                    {% if is_granted('ROLE_ADMIN') %}
+                                        <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="#">Admin<b class="caret"></b> </a>
+                                            <ul class="dropdown-menu">
+                                                <li class="dropdown-submenu"> <a class="dropdown-toggle" data-toggle="dropdown" href="#">Messages<b class="caret"></b> </a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="{{ path('carnaval_website_adm_messages') }}">Boite de Reception</a></li>
+                                                        <li><a href="{{ path('carnaval_website_adm_messages_archived') }}">Messages Archivés</a></li>
+                                                        <li><a href="{{ path('carnaval_website_adm_messages_garbage') }}">Corbeille</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="dropdown-submenu"> <a class="dropdown-toggle" data-toggle="dropdown" href="#">Liens<b class="caret"></b> </a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="{{ path('carnaval_website_adm_categories') }}">Liste des catégories</a></li>
+                                                        <li><a href="{{ path('carnaval_website_adm_liens') }}">Liste des liens</a></li>
+                                                        <li><a href="{{ path('carnaval_website_adm_categorie_ajout') }}">Ajouter une catégorie</a></li>
+                                                        <li><a href="{{ path('carnaval_website_adm_lien_ajout') }}">Ajouter un lien</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="dropdown-submenu"> <a class="dropdown-toggle" data-toggle="dropdown" href="#">Evenements<b class="caret"></b> </a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="{{ path('carnaval_website_adm_events') }}">Liste des événements</a></li>
+                                                        <li><a href="{{ path('carnaval_website_adm_evenement_ajout') }}">Ajouter un événement</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="dropdown-submenu"> <a class="dropdown-toggle" data-toggle="dropdown" href="#">Vidéos<b class="caret"></b> </a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="{{ path('carnaval_website_adm_categories_videos') }}">Liste des catégories</a></li>
+                                                        <li><a href="{{ path('carnaval_website_adm_videos') }}">Liste des vidéos</a></li>
+                                                        <li><a href="{{ path('carnaval_website_adm_categorie_videos_ajout') }}">Ajouter une catégorie</a></li>
+                                                        <li><a href="{{ path('carnaval_website_adm_video_ajout') }}">Ajouter une vidéo</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a href="{{ path('carnaval_website_adm_images') }}">Images</a></li>
+                                            </ul>
+                                        </li>
+                                    {% endif %}
+                                    <li>{% if is_granted('ROLE_ADMIN') %}<a href="{{ path('logout') }}">Logout</a> {% else %} <a href="{{ path('login') }}">Login</a> {% endif %} </li>
+                                </ul>
+                            </form>
+                        </div>
                     </div>
-				</div>
-			</div>
-		</nav>
-		<div class="container">
-			<div class="row-fluid">
-				<div class="span10 offset1">
-                    {% for key, flashMessages in app.session.flashbag.all() %}
-                        {% for message in flashMessages %}
-                            <div class="alert alert-{{ key }}">
-                                {{ message }}
-                            </div>
+                </div>
+            </nav>
+            <div class="container">
+                <div class="row-fluid">
+                    <div class="span10 offset1">
+                        {% for key, flashMessages in app.session.flashbag.all() %}
+                            {% for message in flashMessages %}
+                                <div class="alert alert-{{ key }}">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
                         {% endfor %}
-                    {% endfor %}
-					{% block carnaval_contenu %}
-					  
-					{% endblock %}
-				</div>     
-			</div>
-      <div class="push"><!--//--></div>
-		</div>
-    </div>
-    <footer>
-      <div class="container">
-        <p class="muted credit" style="text-align: center; font-size: 10px;">Tous droit réservés - Carnaval Artifices Evénementiel SARL au capital de 7 500&#8364; | SIRET 53309793700015 | R.C.S ROUEN 533 097 937</p>
-      </div>
-    </footer>
+                        {% block carnaval_contenu %}
 
-    {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="//cdn.datatables.net/1.10.5/js/jquery.dataTables.min.js"></script>
+                        {% endblock %}
+                    </div>
+                </div>
+          <div class="push"></div>
+            </div>
+        </div>
+        <footer>
+          <div class="container">
+            <p class="muted credit center font_10">Tous droit réservés - Carnaval Artifices Evénementiel SARL au capital de 7 500&#8364; | SIRET 53309793700015 | R.C.S ROUEN 533 097 937</p>
+          </div>
+        </footer>
 
-    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
-    <script src="//cdn.datatables.net/plug-ins/f2c75b7247b/sorting/datetime-moment.js"></script>
+        {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="//cdn.datatables.net/1.10.5/js/jquery.dataTables.min.js"></script>
 
-    <script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
-    {{ tinymce_init() }}
+        <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
+        <script src="//cdn.datatables.net/plug-ins/f2c75b7247b/sorting/datetime-moment.js"></script>
 
-    {% block javascripts %}
+        <script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
+        {{ tinymce_init() }}
 
-    {% endblock %}
+        {% block javascripts %}
 
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        {% endblock %}
 
-        ga('create', 'UA-15187735-4', 'auto');
-        ga('send', 'pageview');
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-    </script>
+            ga('create', 'UA-15187735-4', 'auto');
+            ga('send', 'pageview');
 
-  </body>
+        </script>
+
+    </body>
 </html>

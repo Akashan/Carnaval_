@@ -8,15 +8,14 @@
  
 {% block carnaval_contenu %}
     <br />
-    <IMG src="{{ asset('img/logo_main.png') }}" style="border:1px solid white;" alt="Logo Carnaval Artifices Evénementiels" >
+    <img src="{{ asset('img/logo_main.png') }}" class="border_solid_white_1" alt="Logo Carnaval Artifices Evénementiels" />
     <br />
-	<H1 style="text-align:center; font-size: 15px;">CARNAVAL ARTIFICES EVENEMENTIELS, le spécialiste Normands du spectacle pyrotechnique.</H1>
-	<TABLE cellpadding="0" cellspacing="0" border="0" width="100%">
-		<TR>
-			<TD align="center" valign="bottom"><IMG src="{{ asset('img/logo_lacroix_ruggieri.png') }}" width="250px" style="border:1px solid white;" alt="Logo Lacrois-Ruggieri" ></TD>
-		</TR>
-		<TR>
-			<TD align="center"><br><A HREF="http://www.facebook.com/Carnaval.Artifices.Evenementiels"><IMG src="{{ asset('img/facebook.jpg') }}" width="100px" style="border:1px solid white;" alt="Logo Facebook"></A></TD>
-		</TR>
-	</TABLE>
+	<h1 class="center font_15">CARNAVAL ARTIFICES EVENEMENTIELS</h1>
+    <h2 class="center font_15">le spécialiste Normands du spectacle pyrotechnique.</h2>
+    <div class="center">
+        <img src="{{ asset('img/logo_lacroix_ruggieri.png') }}" class="border_solid_white_1 size_250" alt="Logo Lacrois-Ruggieri" />
+    </div>
+    <div class="center">
+        <a href="http://www.facebook.com/Carnaval.Artifices.Evenementiels"><img src="{{ asset('img/facebook.jpg') }}" class="border_solid_white_1 size_100" alt="Logo Facebook" /></a>
+    </div>
 {% endblock %}
